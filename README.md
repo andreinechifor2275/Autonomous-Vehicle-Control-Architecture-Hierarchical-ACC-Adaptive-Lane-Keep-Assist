@@ -1,2 +1,9 @@
 # Autonomous-Vehicle-Control-Architecture-Hierarchical-ACC-Adaptive-Lane-Keep-Assist
 Bachelor's degree project focused on the development, mathematical modeling, and validation of a software architecture for an autonomous vehicle. The system integrates lateral and longitudinal control algorithms, tested in a real-time co-simulation environment.
+
+Key Features & Modules:
+- Longitudinal Control (Adaptive Cruise Control): Implemented a hierarchical control system based on a PI controller. Developed a safety logic utilizing a Minimum Selector (Override) that automatically switches between cruise speed maintenance and emergency braking, guaranteeing a 20m safety margin from obstacles with 0% overshoot.
+- Lateral Control (Lane Assist): Designed an Adaptive Pure Pursuit algorithm with a speed-dependent Dynamic Lookahead. This module eliminates steering oscillations at high speeds (tested up to 72 km/h) and keeps the transient lateral error under the critical threshold of 0.83 meters.
+- Mathematical Modeling: Developed and integrated the state equations for a 3 Degrees of Freedom (3DOF) Bicycle Model, calculating lateral/longitudinal forces, accelerations (centripetal and yaw), and slip angles.
+- Data Processing & Pipeline: Implemented a data extraction pipeline using virtual sensors (Camera, Ideal Radar). Applied time-series smoothing filters (Exponential Moving Average) for distance data and processed complex signals (Bus Selectors) to extract the lateral deviation of lane boundaries.
+- Architecture & Validation: System developed in a distributed co-simulation environment. The decision-making algorithmic layer runs in MATLAB/Simulink, communicating bidirectionally with the 3D physics environment in Unreal Engine. Performances were quantitatively validated through continuous comparison with Ground Truth data.
